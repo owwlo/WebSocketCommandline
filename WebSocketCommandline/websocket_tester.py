@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+
 from autobahn.twisted.choosereactor import install_reactor
 from twisted.python import log
 
@@ -222,7 +224,7 @@ usage: connect ws://host:port/path
         else:
             t = TesterClientService(self.clientManager, host, port, path)
 
-if __name__ == '__main__':
+def main():
     args, optparser = parseArguments()
 
     # TODO: Hook to the cmd out later
@@ -235,3 +237,6 @@ if __name__ == '__main__':
 
     cmdMgr = CommandManager(service, clientManager)
     cmdMgr.cmdloop()
+
+if __name__ == '__main__':
+    main()
