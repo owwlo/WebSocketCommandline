@@ -12,9 +12,11 @@ Tested with:
 
 ### Option A
 pip it!
+
 ```sh
-&> pip install -e git+https://github.com/owwlo/WebSocketCommandline.git@master#egg=websocket_tester
+&> pip install WebSocketCommandline
 ```
+
 ### Option B
 No special installation needed for now. Download the file and run it with python interpreter.
 ```sh
