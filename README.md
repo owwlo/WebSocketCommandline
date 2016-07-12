@@ -6,9 +6,16 @@ WebSocketCommandline is a command line tool to easily test the connectivity of W
 
 Tested with:
 * Python 3.4
+* Python 2.7
 
 ## Installation
 
+### Option A
+pip it!
+```sh
+&> pip install -e git+https://github.com/owwlo/WebSocketCommandline.git@master#egg=websocket_tester
+```
+### Option B
 No special installation needed for now. Download the file and run it with python interpreter.
 ```sh
 &> python websocket_tester.py
@@ -60,8 +67,8 @@ Send text message to the Client/Server
 # TODOs
 
 * Better log/output handling
-* Can be installed by pip
-* Tested against python2
+* ~~Can be installed by pip~~
+* ~~Tested against python2~~
 * ...
 
 # License
