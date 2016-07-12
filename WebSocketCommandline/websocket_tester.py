@@ -16,7 +16,6 @@ import cmd
 import logging
 import string
 import sys
-# import coloredlogs
 import os
 import time
 

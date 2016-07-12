@@ -11,19 +11,29 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
+long_description='WebSocketCommandline is a command line tool to easily test the connectivity of WebSocket client/server in shell with Python.'
+
+try:
+    import pypandoc
+    long_description = pypandoc.convert('README.md', 'rst')
+except (IOError, ImportError):
+    pass
+
 setup(
-    name='websocket_tester',
+    name='WebSocketCommandline',
+    package=['WebSocketCommandline'],
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.0.1',
-
-    description='A Python script to test WebSocket.',
-    long_description='WebSocketCommandline is a command line tool to easily test the connectivity of WebSocket client/server in shell with Python.',
+    version='0.0.2',
 
     # The project's main homepage.
     url='https://github.com/owwlo/WebSocketCommandline',
+    download_url = 'https://github.com/owwlo/WebSocketCommandline/tarball/0.0.2',
+
+    description='A Python script to test WebSocket.',
+    long_description=long_description,
 
     # Author details
     author='owwlo',
@@ -42,7 +52,7 @@ setup(
 
         # Indicate who your project is intended for
         'Intended Audience :: Developers',
-        'Topic :: Software Development :: Util',
+        'Topic :: Software Development',
 
         # Pick your license as you wish (should match "license" above)
         'License :: OSI Approved :: MIT License',
@@ -71,7 +81,6 @@ setup(
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
         'autobahn>=0.14.1',
-        'coloredlogs>=1.0.1',
         'Twisted>=16.2.0'
     ],
 
