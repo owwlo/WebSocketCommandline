@@ -26,11 +26,11 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.0.3',
+    version='0.0.5',
 
     # The project's main homepage.
     url='https://github.com/owwlo/WebSocketCommandline',
-    download_url = 'https://github.com/owwlo/WebSocketCommandline/tarball/0.0.3',
+    download_url = 'https://github.com/owwlo/WebSocketCommandline/tarball/0.0.5',
 
     description='A Python script to test WebSocket.',
     long_description=long_description,
@@ -73,7 +73,7 @@ setup(
 
     # Alternatively, if you want to distribute just a my_module.py, uncomment
     # this:
-    #   py_modules=["my_module"],
+    py_modules=["WebSocketCommandline"],
 
     # List run-time dependencies here.  These will be installed by pip when
     # your project is installed. For an analysis of "install_requires" vs pip's
