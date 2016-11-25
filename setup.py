@@ -26,11 +26,11 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.0.2',
+    version='0.0.3',
 
     # The project's main homepage.
     url='https://github.com/owwlo/WebSocketCommandline',
-    download_url = 'https://github.com/owwlo/WebSocketCommandline/tarball/0.0.2',
+    download_url = 'https://github.com/owwlo/WebSocketCommandline/tarball/0.0.3',
 
     description='A Python script to test WebSocket.',
     long_description=long_description,
@@ -81,7 +81,8 @@ setup(
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
         'autobahn>=0.14.1',
-        'Twisted>=16.2.0'
+        'Twisted>=16.2.0',
+        'PyTerminalCommander>=0.0.4'
     ],
 
     # To provide executable scripts, use entry points in preference to the

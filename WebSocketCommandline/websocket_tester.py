@@ -1,5 +1,7 @@
 #! /usr/bin/env python
 
+# -*- coding: utf-8 -*-
+
 from autobahn.twisted.choosereactor import install_reactor
 from twisted.python import log
 
@@ -18,6 +20,8 @@ import string
 import sys
 import os
 import time
+
+from PyTerminalCommander import Commander, CommandHandler, CommanderPopupLauncher
 
 from datetime import datetime as dt
 import datetime
@@ -149,17 +153,13 @@ class TesterClientService:
     def reactorSetup(self):
         reactor.connectTCP(self.host, self.port, self.f)
 
-class CommandManager(cmd.Cmd):
-
-    prompt = '>> '
-    intro = "Websocket Commandline Test Tool(Whisky so awesome!)."
-
+class CommandManager(CommandHandler):
     def __init__(self, service, clientManager):
-        cmd.Cmd.__init__(self)
+        CommandHandler.__init__(self)
         self.__service = service
         self.clientManager = clientManager
 
-    def do_list(self, line):
+    def do_list(self, commander, extra):
         '''
 List all connected clients
         '''
@@ -174,13 +174,13 @@ List all connected clients
                 t = "Client"
             print("{0}\t{1}\t{2}".format(i, t, str(c.peer)))
 
-    def do_send(self, line):
+    def do_send(self, commander, extra):
         '''
 Send raw text to client
 usage: send [dest_id] [text]
         '''
         try:
-            dest_id, text = line.split(" ", 1)
+            dest_id, text = extra.split(" ", 1)
             dest_id = int(dest_id)
             allCLients = self.clientManager.getAllClients()
             if dest_id >= len(allCLients) or dest_id < 0:
@@ -191,28 +191,28 @@ usage: send [dest_id] [text]
         else:
             allCLients[dest_id].sendMessage(text.encode('utf8'))
 
-    def do_status(self, line):
+    def do_status(self, commander, extra):
         '''
 Show connection status
         '''
         pass
 
-    def do_exit(self, line):
+    def do_exit(self, commander, extra):
         '''
 Exit the application.
         '''
         sys.exit()
 
-    def emptyline(self):
-        pass
+    # def emptyline(self):
+    #     pass
 
-    def do_connect(self, line):
+    def do_connect(self, commander, extra):
         '''
 Connect to another WebSocket Server
 usage: connect ws://host:port/path
         '''
         try:
-            s = line.split()
+            s = extra.split()
             host = s[0]
             port = s[1] 
             path = ""
@@ -234,8 +234,15 @@ def main():
     service.setDaemon(True)
     service.start()
 
-    cmdMgr = CommandManager(service, clientManager)
-    cmdMgr.cmdloop()
+    c = Commander('Websocket Commandline Test Tool(Whisky so awesome!).'
+        , cmd_cb = CommandManager(service, clientManager)
+        , hook_stdout = True
+        , hook_stderr = True
+        , show_help_on_start = True
+        , show_line_num = False
+    )
+
+    c.loop()
 
 if __name__ == '__main__':
     main()
