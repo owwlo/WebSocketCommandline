@@ -5,45 +5,41 @@ WebSocketCommandline is a command line tool to easily test the connectivity of W
 ## Compatibility
 
 Tested with:
-* Python 3.4
-* Python 2.7
+* Python 3.5.2
+* Python 2.7.12
 
 ## Installation
 
-### Option A
 pip it!
 
 ```sh
 &> pip install WebSocketCommandline
 ```
 
-### Option B
-No special installation needed for now. Download the file and run it with python interpreter.
-```sh
-&> python websocket_tester.py
-```
-
-Dependencies can be installed by:
-```sh
-&> sudo pip install -r requirements.txt
-```
-
 ## Usage
 
-websocket_tester.py will automatically start a WebSocket server at startup. To change the default server port:
+### Try it!
 
 ```sh
-&> python websocket_tester.py --port 12345
+&> websocket_tester
+```
+
+### More Options
+
+websocket_tester will automatically start a WebSocket server at startup. To change the default server port:
+
+```sh
+&> websocket_tester --port 12345
 ```
 
 In addition to the port, you can also change the WebSocket URI path for the server:
 
 ```sh
-&> python websocket_tester.py --port 12345 --url-root iamawebsocket
+&> websocket_tester --port 12345 --url-root iamawebsocket
 ```
 > This will make the server listen on ws://localhost:12345/iamawebsocket
 
-websocket_tester.py has both builtin Server and Client support, in order to connect to a server:
+websocket_tester has both builtin Server and Client support, in order to connect to a server:
 
 ```sh
 # After starting the tool.

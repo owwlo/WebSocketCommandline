@@ -197,11 +197,9 @@ Show connection status
         '''
         pass
 
-    def do_exit(self, commander, extra):
-        '''
-Exit the application.
-        '''
-        sys.exit()
+    def do_quit(self, *args):
+        '''Exit the program.'''
+        return Commander.Exit
 
     # def emptyline(self):
     #     pass
